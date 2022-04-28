@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Button, Icon, Label, Table } from "semantic-ui-react";
 import ReactJson from "react-json-view";
 import ReactMarkdown from "react-markdown";
+import {
+  getLocalStorageSettings
+} from "../../../helpers/utils"
 
 const DEFAULT_ROWS_PER_PAGE = 50;
 
@@ -26,14 +29,21 @@ const DataTableRowsComponent = ({
     return data;
   };
 
+  const userSignInAction = getLocalStorageSettings(
+    "signInAction"
+  )
+
   const handleCellClick = (e, column, entry) => {
     // This function should appropriately handle a Cell Click given a desired
     // action by the column configuration
-    if (column.onClick && column.onClick.action === "redirect") {
+
+    var clickAction = userSignInAction || (column.onClick && column.onClick.action ? column.onClick.action : "");
+
+    if (clickAction === "redirect") {
       // TODO, change this to useHistory
       setRedirect(entry[column.key] + window.location.search || "");
-    } else if (column.onClick && column.onClick.action === "newtab") {
-      window.open(window.location.origin + entry[column.key] + window.location.search || "")
+    } else if (clickAction === "newtab") {
+      window.open(window.location.origin + entry[column.key] + window.location.search || "");
     }
   };
 
