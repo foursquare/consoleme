@@ -26,9 +26,7 @@ const SelectRoles = () => {
         return;
       }
       if (userSignInAction && userSignInAction !== data.tableConfig.columns[0].onClick.action) {
-        data.tableConfig.columns.forEach(function(col) {
-          col.onClick.action = userSignInAction
-        })
+        data.tableConfig.columns[0].onClick.action = userSignInAction
       }
       setPageConfig(data);
     })();
