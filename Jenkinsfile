@@ -12,7 +12,7 @@ pipeline {
                 branch 'jenkins_build'
             }
             steps {
-                k8s_deploy cluster: 'eks-us-use1-infra', team: 'infra-eng', app: 'consoleme-dev', image_name: '087473112489.dkr.ecr.us-east-1.amazonaws.com/infraeng-consoleme'
+                k8s_deploy cluster: 'eks-us-use1-infra', team: 'consoleme-dev', app: 'dev', image_name: '087473112489.dkr.ecr.us-east-1.amazonaws.com/infraeng-consoleme'
             }
         }
     }
