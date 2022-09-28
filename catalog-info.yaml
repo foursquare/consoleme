@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: consoleme
+  description: A user authentication interface for cloud management access that allows exploring of roles and policies
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    jenkins.io/job-full-name: Foursquare Github/infraeng-consoleme
+    github.com/project-slug: foursquare/infraeng-consoleme
+spec:
+  type: website
+  lifecycle: production
+  owner: team:infra-eng
+  system: consoleme
+  dependsOn:
+  - component:consoleme-roles
+  - component:consoleme-plugins
