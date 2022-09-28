@@ -1,0 +1,8 @@
+site_name: 'ConsoleMe Documentation'
+
+nav:
+  - introduction: README.md
+  - docs: docs/gitbook/
+
+plugins:
+  - techdocs-core
