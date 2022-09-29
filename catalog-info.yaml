@@ -7,6 +7,9 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     jenkins.io/job-full-name: Foursquare Github/infraeng-consoleme
     github.com/project-slug: foursquare/infraeng-consoleme
+  links:
+    - url: https://consoleme.k8s.foursquare.com
+      title: ConsoleMe Home
 spec:
   type: website
   lifecycle: production
