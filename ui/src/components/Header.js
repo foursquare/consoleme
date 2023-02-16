@@ -175,9 +175,10 @@ const ConsoleMeHeader = () => {
           header
           name="header"
           style={{
-            fontSize: "20px",
+            fontSize: "15px",
             textTransform: "uppercase",
             width: "240px",
+            backgroundColor: "#22be34",
           }}
           href="/"
         >
@@ -186,7 +187,7 @@ const ConsoleMeHeader = () => {
             src="/images/logos/logo192.png"
             style={{ marginRight: "1.5em" }}
           />
-          ConsoleMe
+          ConsoleMe-Dev
         </Menu.Item>
         <Menu.Menu position="left">
           <Menu.Item active={false} exact as={NavLink} name="roles" to="/">
