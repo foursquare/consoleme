@@ -70,6 +70,7 @@ async def populate_oidc_config():
         elif key_type == "EC":
             oidc_config["jwt_keys"][key_id] = ECAlgorithm.from_jwk(json.dumps(k))
         log.debug("loaded oidc key: \"{}\"".format(key_id))
+    log.debug("aud: {}".format(oidc_config["aud"]))
     oidc_config["aud"] = config.get(
         "get_user_by_aws_alb_auth_settings.access_token_validation.client_id"
     )
@@ -130,6 +131,7 @@ async def authenticate_user_by_alb_auth(request):
                 )
             access_token_pub_key = oidc_config["jwt_keys"][key_id]
 
+        log.debug("aud: {}".format(oidc_config["aud"]))
         decoded_access_token = jwt.decode(
             access_token,
             access_token_pub_key,
