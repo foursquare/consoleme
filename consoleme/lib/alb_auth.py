@@ -61,6 +61,7 @@ async def populate_oidc_config():
     )
     oidc_config["jwks_data"] = json.loads(res.body)
     oidc_config["jwt_keys"] = {}
+    log.debug("loading oidc keys")
     for k in oidc_config["jwks_data"]["keys"]:
         key_type = k["kty"]
         key_id = k["kid"]
@@ -68,6 +69,7 @@ async def populate_oidc_config():
             oidc_config["jwt_keys"][key_id] = RSAAlgorithm.from_jwk(json.dumps(k))
         elif key_type == "EC":
             oidc_config["jwt_keys"][key_id] = ECAlgorithm.from_jwk(json.dumps(k))
+        log.debug("loaded oidc key: {}".format(oidc_config["jwt_keys"][key_id]))
     oidc_config["aud"] = config.get(
         "get_user_by_aws_alb_auth_settings.access_token_validation.client_id"
     )
