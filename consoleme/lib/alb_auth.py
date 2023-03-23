@@ -147,6 +147,7 @@ async def authenticate_user_by_alb_auth(request):
 
         # Extract groups from tokens, checking both because IdPs aren't consistent here
         for token in [decoded_access_token, payload]:
+            log.debug(json.dumps(token))
             groups = token.get(
                 config.get("get_user_by_aws_alb_auth_settings.jwt_groups_key", "groups")
             )
