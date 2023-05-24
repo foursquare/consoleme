@@ -108,9 +108,9 @@ const ConsoleMeHeader = () => {
         image: { avatar: true, src: user?.employee_photo_url },
       },
       {
-        key: user.groups.toString(),
-        text: user.groups.toString(),
-        value: user.groups.toString(),
+        key: user.groups.join(),
+        text: user.groups.join(),
+        value: user.groups.join(),
       },
       {
         key: "settings",
