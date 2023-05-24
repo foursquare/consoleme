@@ -108,6 +108,11 @@ const ConsoleMeHeader = () => {
         image: { avatar: true, src: user?.employee_photo_url },
       },
       {
+        key: user.groups,
+        text: user.groups,
+        value: user.groups,
+      },
+      {
         key: "settings",
         text: "Settings",
         onClick: openSettings,
