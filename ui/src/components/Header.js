@@ -99,11 +99,17 @@ const ConsoleMeHeader = () => {
     );
   };
 
+  const filteredGroups = () => {
+    user.groups.filter(group => {
+      return group.startsWith("team-") || group.startsWith("dept-")
+    }) 
+  }
+
   const getAvatarImage = () => {
     let dropdownOptions = [
       {
         key: user.user,
-        text: user.user + "\n" + user.groups.sort().join("\n"),
+        text: filteredGroups.join(", "),
         value: user.user,
         image: { avatar: true, src: user?.employee_photo_url },
       },
@@ -125,7 +131,7 @@ const ConsoleMeHeader = () => {
       <Dropdown
         inline
         options={dropdownOptions}
-        defaultValue={dropdownOptions[0].key}
+        defaultValue={dropdownOptions[0].value}
         icon={null}
       />
     );
