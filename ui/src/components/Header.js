@@ -103,14 +103,9 @@ const ConsoleMeHeader = () => {
     let dropdownOptions = [
       {
         key: user.user,
-        text: user.user,
+        text: user.user + "\n" + user.groups.sort().join("\n"),
         value: user.user,
         image: { avatar: true, src: user?.employee_photo_url },
-      },
-      {
-        key: user.groups.join(),
-        text: user.groups.join(),
-        value: user.groups.join(),
       },
       {
         key: "settings",
@@ -130,7 +125,7 @@ const ConsoleMeHeader = () => {
       <Dropdown
         inline
         options={dropdownOptions}
-        defaultValue={dropdownOptions[0].value}
+        defaultValue={dropdownOptions[0].key}
         icon={null}
       />
     );
