@@ -100,7 +100,7 @@ const ConsoleMeHeader = () => {
   };
 
   const filteredGroups = () => {
-    user.groups.filter(group => {
+    return user.groups.filter(group => {
       return group.startsWith("team-") || group.startsWith("dept-")
     }) 
   }
