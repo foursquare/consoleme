@@ -47,13 +47,13 @@ const listAuthGroups = (user) => {
       return null;
     }
     return (
-      <List.Item
+      <Menu.Item
         style={{
           fontSize: "14px",
         }}
       >
         {match[0]}
-      </List.Item>
+      </Menu.Item>
     );
   });
 };
@@ -108,7 +108,7 @@ const ConsoleMeSidebar = () => {
           </Menu.Item>
           <Menu.Item>
             <Menu.Header>Authorized Groups</Menu.Header>
-            <List bulleted>{listAuthGroups(user)}</List>
+            <Menu.Menu>{listAuthGroups(user)}</Menu.Menu>
           </Menu.Item>
           <Menu.Item>
             <Menu.Header>Help</Menu.Header>
