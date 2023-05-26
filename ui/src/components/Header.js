@@ -99,15 +99,11 @@ const ConsoleMeHeader = () => {
     );
   };
 
-  const filteredGroups = user.groups.filter(group => {
-    return group.startsWith("team-") || group.startsWith("dept-")
-  })
-
   const getAvatarImage = () => {
     let dropdownOptions = [
       {
         key: user.user,
-        text: filteredGroups.join(", "),
+        text: user.user,
         value: user.user,
         image: { avatar: true, src: user?.employee_photo_url },
       },
