@@ -3,7 +3,7 @@ import { Label, Header, Icon, Image, Menu } from "semantic-ui-react";
 import { parseLocalStorageCache } from "../helpers/utils";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../auth/AuthProviderDefault";
-import { arnRegex } from "../helpers/utils";
+import { arnRegex, groupRegex } from "../helpers/utils";
 
 const localStorageRecentRolesKey = "consoleMeLocalStorage";
 
@@ -35,6 +35,24 @@ const listRecentRoles = (recentRoles, user) => {
             </Header.Subheader>
           </Header.Content>
         </Header>
+      </Menu.Item>
+    );
+  });
+};
+
+const listAuthGroups = (user) => {
+  return user.groups.sort().map((group) => {
+    const match = group.match(groupRegex);
+    if (!match) {
+      return null;
+    }
+    return (
+      <Menu.Item
+        style={{
+          fontSize: "14px",
+        }}
+      >
+        {match[0]}
       </Menu.Item>
     );
   });
@@ -87,6 +105,10 @@ const ConsoleMeSidebar = () => {
             <Label>{recentRoles.length}</Label>
             <Menu.Header>Recent Roles</Menu.Header>
             <Menu.Menu>{listRecentRoles(recentRoles, user)}</Menu.Menu>
+          </Menu.Item>
+          <Menu.Item>
+            <Menu.Header>Authorized Groups</Menu.Header>
+            <Menu.Menu>{listAuthGroups(user)}</Menu.Menu>
           </Menu.Item>
           <Menu.Item>
             <Menu.Header>Help</Menu.Header>

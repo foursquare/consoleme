@@ -45,6 +45,7 @@ class TestUserProfile(AsyncHTTPTestCase):
                     "cloudtrail_denies_policy_generation": True,
                 },
                 "user": "user@example.com",
+                "groups": ["groupA","groupB"],
                 "can_logout": False,
                 "is_contractor": False,
                 "employee_photo_url": "https://www.gravatar.com/avatar/b58996c504c5638798eb6b511e6f49af?d=mp",
