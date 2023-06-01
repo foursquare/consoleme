@@ -42,7 +42,7 @@ const listRecentRoles = (recentRoles, user) => {
 
 const listAuthGroups = (user) => {
   return user.groups.sort().map((group) => {
-    const match = group.match(groupRegex);
+    const match = group.match(user.groups_regex);
     if (!match) {
       return null;
     }

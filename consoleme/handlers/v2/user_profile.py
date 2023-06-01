@@ -61,6 +61,7 @@ class UserProfileHandler(BaseAPIV1Handler):
             "site_config": site_config,
             "user": self.user,
             "groups": self.groups,
+            "groups_regex": config.get("authorized_groups_regex", ".+"),
             "can_logout": config.get("auth.set_auth_cookie", False),
             "is_contractor": is_contractor,
             "employee_photo_url": config.config_plugin().get_employee_photo_url(
