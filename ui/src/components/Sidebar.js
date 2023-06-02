@@ -3,7 +3,7 @@ import { Label, Header, Icon, Image, Menu } from "semantic-ui-react";
 import { parseLocalStorageCache } from "../helpers/utils";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../auth/AuthProviderDefault";
-import { arnRegex, groupRegex } from "../helpers/utils";
+import { arnRegex } from "../helpers/utils";
 
 const localStorageRecentRolesKey = "consoleMeLocalStorage";
 
