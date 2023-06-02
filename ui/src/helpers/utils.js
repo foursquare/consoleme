@@ -310,4 +310,3 @@ export const setLocalStorageSettings = (settings) => {
 };
 
 export const arnRegex = /^arn:aws:iam::(?<accountId>\d{12}):(?<resourceType>(user|role))\/(.+\/)?(?<resourceName>(.+))/;
-export const groupRegex = /^(team|dept)-.+/
