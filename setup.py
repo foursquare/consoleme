@@ -66,8 +66,9 @@ setup(
             "default_celery_tasks_functions = consoleme.default_plugins.plugins.celery_tasks.celery_tasks:CeleryTasks",
             "default_metrics = consoleme.default_plugins.plugins.metrics.metrics:Metric",
             "default_policies = consoleme.default_plugins.plugins.policies.policies:Policies",
-            "default_group_mapping = consoleme.default_plugins.plugins.group_mapping.group_mapping:GroupMapping",
             "default_internal_routes = consoleme.default_plugins.plugins.internal_routes.internal_routes:InternalRoutes",
+            # FSQ custom plugins
+            "default_group_mapping = consoleme.custom_plugins.plugins.group_mapping.group_mapping:GroupMapping"
         ],
     },
     cmdclass={"cleanall": CleanAllCommand},
