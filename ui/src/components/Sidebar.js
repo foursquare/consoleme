@@ -40,6 +40,24 @@ const listRecentRoles = (recentRoles, user) => {
   });
 };
 
+const listAuthGroups = (user) => {
+  return user.groups.sort().map((group) => {
+    const match = group.match(user.groups_regex);
+    if (!match) {
+      return null;
+    }
+    return (
+      <Menu.Item
+        style={{
+          fontSize: "14px",
+        }}
+      >
+        {match[0]}
+      </Menu.Item>
+    );
+  });
+};
+
 const ConsoleMeSidebar = () => {
   const { user } = useAuth();
   const [siteConfig, setSiteConfig] = useState({});
@@ -87,6 +105,10 @@ const ConsoleMeSidebar = () => {
             <Label>{recentRoles.length}</Label>
             <Menu.Header>Recent Roles</Menu.Header>
             <Menu.Menu>{listRecentRoles(recentRoles, user)}</Menu.Menu>
+          </Menu.Item>
+          <Menu.Item>
+            <Menu.Header>Authorized Groups</Menu.Header>
+            <Menu.Menu>{listAuthGroups(user)}</Menu.Menu>
           </Menu.Item>
           <Menu.Item>
             <Menu.Header>Help</Menu.Header>

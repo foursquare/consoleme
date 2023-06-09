@@ -61,6 +61,7 @@ async def populate_oidc_config():
     )
     oidc_config["jwks_data"] = json.loads(res.body)
     oidc_config["jwt_keys"] = {}
+    log.debug("loading oidc keys")
     for k in oidc_config["jwks_data"]["keys"]:
         key_type = k["kty"]
         key_id = k["kid"]
@@ -68,9 +69,11 @@ async def populate_oidc_config():
             oidc_config["jwt_keys"][key_id] = RSAAlgorithm.from_jwk(json.dumps(k))
         elif key_type == "EC":
             oidc_config["jwt_keys"][key_id] = ECAlgorithm.from_jwk(json.dumps(k))
+        log.debug("loaded oidc key: \"{}\"".format(key_id))
     oidc_config["aud"] = config.get(
         "get_user_by_aws_alb_auth_settings.access_token_validation.client_id"
     )
+    log.debug("aud: {}".format(oidc_config["aud"]))
     return oidc_config
 
 
@@ -128,6 +131,7 @@ async def authenticate_user_by_alb_auth(request):
                 )
             access_token_pub_key = oidc_config["jwt_keys"][key_id]
 
+        log.debug("aud: {}".format(oidc_config["aud"]))
         decoded_access_token = jwt.decode(
             access_token,
             access_token_pub_key,
@@ -143,6 +147,7 @@ async def authenticate_user_by_alb_auth(request):
 
         # Extract groups from tokens, checking both because IdPs aren't consistent here
         for token in [decoded_access_token, payload]:
+            log.debug(json.dumps(token))
             groups = token.get(
                 config.get("get_user_by_aws_alb_auth_settings.jwt_groups_key", "groups")
             )
