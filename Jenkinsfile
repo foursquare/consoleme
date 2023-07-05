@@ -1,10 +1,6 @@
 @Library('factual-shared-libs') _
-def ts = new Date().format("yyyy-MM-dd'T'HH-mm-ss")
 pipeline {
     agent none
-    environment {
-        TAG = "${ts}"
-    }
     stages {
         stage ('Build') {
             when {
@@ -15,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                docker_build name: 'infraeng-consoleme', tag: '$TAG'
+                docker_build name: 'infraeng-consoleme'
             }
         }
         stage ('Deploy-dev') {
