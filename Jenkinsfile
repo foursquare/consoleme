@@ -1,6 +1,9 @@
 @Library('factual-shared-libs') _
 pipeline {
     agent none
+    environment{
+        PATH                          = "${PATH}:/usr/local/airflow/.local/bin"
+    }
     stages {
         stage ('Build') {
             when {
