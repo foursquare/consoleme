@@ -1,9 +1,6 @@
 @Library('factual-shared-libs@kaniko_v1.19.2-slim') _
 pipeline {
     agent none
-    environment{
-        PATH                          = "${PATH}:/usr/local/airflow/.local/bin"
-    }
     stages {
         stage ('Build') {
             when {
