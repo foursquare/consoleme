@@ -22,7 +22,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                k8s_deploy cluster: 'eks-ss-use1-security', team: 'consoleme', app: 'dev', image_name: '087473112489.dkr.ecr.us-east-1.amazonaws.com/infraeng-consoleme'
+                k8s_deploy cluster: 'eks-ss-use1-security', team: 'consoleme', app: 'dev', image_name: '087473112489.dkr.ecr.us-east-1.amazonaws.com/infraeng-consoleme', pod_label: 'docker_build_consoleme'
             }
         }
         stage ('Deploy-prod') {
