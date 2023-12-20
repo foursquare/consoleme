@@ -1,4 +1,4 @@
-@Library('factual-shared-libs') _
+@Library('factual-shared-libs@kaniko_v1.19.2-slim') _
 pipeline {
     agent none
     environment{
