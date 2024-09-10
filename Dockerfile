@@ -1,5 +1,5 @@
 # Dockerfile should instantiate AWS Project with configurable plugins
-FROM imgcache.k8s.foursquare.com/python:3.12
+FROM imgcache.k8s.foursquare.com/python:3.10
 MAINTAINER Netflix Security
 WORKDIR /apps/consoleme
 # NODE_OPTIONS meeded to increase memory size of Node for the `yarn build` step. The Monaco Editor
